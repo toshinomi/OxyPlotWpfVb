@@ -5,6 +5,9 @@ Class MainWindow
 
     Private m_nHistgram(255) As Integer
 
+    ''' <summary>
+    ''' コンストラクタ
+    ''' </summary>
     Public Sub New()
 
         ' この呼び出しはデザイナーで必要です。
@@ -14,6 +17,11 @@ Class MainWindow
 
     End Sub
 
+    ''' <summary>
+    ''' ファイル選択ボタンのクリックイベント
+    ''' </summary>
+    ''' <param name="sender">オブジェクト</param>
+    ''' <param name="e">ルーティングイベントのデータ</param>
     Private Sub OnClickBtnFileSelect(sender As Object, e As RoutedEventArgs)
         Dim openFileDlg As ComOpenFileDialog = New ComOpenFileDialog()
         openFileDlg.Filter = "JPG|*.jpg|PNG|*.png"
@@ -34,6 +42,9 @@ Class MainWindow
         Return
     End Sub
 
+    ''' <summary>
+    ''' グラフ描画
+    ''' </summary>
     Public Sub DrawHistgram(_bitmap As BitmapImage)
         InitHistgram()
 
@@ -47,6 +58,9 @@ Class MainWindow
         chart.ItemsSource = dataList
     End Sub
 
+    ''' <summary>
+    ''' イメージからヒストグラム用のデータ算出
+    ''' </summary>
     Public Sub CalHistgram(_bitmap As BitmapImage)
         Dim nWidthSize As Integer = _bitmap.Width
         Dim nHeightSize As Integer = _bitmap.Height
@@ -72,6 +86,9 @@ Class MainWindow
         Next
     End Sub
 
+    ''' <summary>
+    ''' ヒストグラム用のデータ初期化
+    ''' </summary>
     Public Sub InitHistgram()
         For nIdx As Integer = 0 To m_nHistgram.Length - 1
             m_nHistgram(nIdx) = 0

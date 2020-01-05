@@ -1,8 +1,14 @@
 ﻿Imports Microsoft.Win32
 
+''' <summary>
+''' ファイルオープンのロジック
+''' </summary>
 Public Class ComOpenFileDialog
     Protected m_openFileDialog As OpenFileDialog
 
+    ''' <summary>
+    ''' ファイル名称
+    ''' </summary>
     Public Property FileName() As String
         Set(value As String)
             m_openFileDialog.FileName = value
@@ -12,6 +18,9 @@ Public Class ComOpenFileDialog
         End Get
     End Property
 
+    ''' <summary>
+    ''' ファイルダイアログに表示される初期ディレクトリ
+    ''' </summary>
     Public Property InitialDirectory() As String
         Set(value As String)
             m_openFileDialog.InitialDirectory = value
@@ -21,6 +30,9 @@ Public Class ComOpenFileDialog
         End Get
     End Property
 
+    ''' <summary>
+    ''' ファイルの種類のフィルタ
+    ''' </summary>
     Public Property Filter() As String
         Set(value As String)
             m_openFileDialog.Filter = value
@@ -30,6 +42,9 @@ Public Class ComOpenFileDialog
         End Get
     End Property
 
+    ''' <summary>
+    ''' 現在選択中のフィルタのインデックス
+    ''' </summary>
     Public Property FilterIndex() As Integer
         Set(value As Integer)
             m_openFileDialog.FilterIndex = value
@@ -39,6 +54,9 @@ Public Class ComOpenFileDialog
         End Get
     End Property
 
+    ''' <summary>
+    ''' ファイルダイアログに表示されるタイトル
+    ''' </summary>
     Public Property Title() As String
         Set(value As String)
             m_openFileDialog.Title = value
@@ -48,6 +66,9 @@ Public Class ComOpenFileDialog
         End Get
     End Property
 
+    ''' <summary>
+    ''' 存在しないファイルを指定した場合に警告を表示するかどうかの値
+    ''' </summary>
     Public Property CheckFileExists() As Boolean
         Set(value As Boolean)
             m_openFileDialog.CheckFileExists = value
@@ -57,6 +78,9 @@ Public Class ComOpenFileDialog
         End Get
     End Property
 
+    ''' <summary>
+    ''' 無効なパスとファイルを入力した場合に警告を表示するかどうかの値
+    ''' </summary>
     Public Property CheckPathExists() As Boolean
         Set(value As Boolean)
             m_openFileDialog.CheckPathExists = value
@@ -66,14 +90,24 @@ Public Class ComOpenFileDialog
         End Get
     End Property
 
+    ''' <summary>
+    ''' コンストラクタ
+    ''' </summary>
     Public Sub New()
         m_openFileDialog = New OpenFileDialog()
     End Sub
 
-    Protected Overloads Sub Finalize()
+    ''' <summary>
+    ''' デスクトラクタ
+    ''' </summary>
+    Protected Overrides Sub Finalize()
         MyBase.Finalize()
     End Sub
 
+    ''' <summary>
+    ''' ダイアログの表示
+    ''' </summary>
+    ''' <returns>結果 成功/失敗</returns>
     Public Function ShowDialog() As Boolean
         Dim bRst As Boolean = False
 
